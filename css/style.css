@@ -103,6 +103,7 @@ html {
 }
 
 .animation-wrapper, .animation_wrapper {
+    flex-direction: column;
     border-radius: 20px;
     overflow: hidden;
     border: 2px solid #829b4fb5;
