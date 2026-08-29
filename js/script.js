@@ -60,3 +60,15 @@ closeSecBtn[0].addEventListener('click', () => {
     animationSec[0].classList.add('hidden')
     closeSecBtn[0].classList.add('hidden')
 })
+
+document.addEventListener('play', function(e) {
+    if (e.target.tagName === 'AUDIO' || e.target.tagName === 'VIDEO') {
+        const allMedia = document.querySelectorAll('audio, video');
+        
+        allMedia.forEach(function(media) {
+            if (media !== e.target) {
+                media.pause();
+            }
+        });
+    }
+}, true);
