@@ -1,0 +1,256 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0f0f0f;
+    background-image: linear-gradient(rgba(15, 15, 15, 0.85), rgba(15, 15, 15, 0.85)), url('../medien/hintergrund.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #f5f5f5;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+html {
+    overscroll-behavior: none;
+    background-color: #0f0f0f;
+}
+
+.brewery-card {
+    background: rgba(30, 30, 30, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 650px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.baubiertitel {
+    font-family: freestyle-script, 'Freestyle Script', cursive;
+    font-size: 36px;
+    color: #ffcc00;
+    line-height: 1.2;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+    border: none;
+    background: none;
+    padding: 20px;
+    margin: -20px;
+    cursor: text;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.divider .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to var(--direction, right), transparent, rgba(255, 204, 0, 0.6));
+    max-width: 100px;
+}
+
+.divider .line:last-child {
+    --direction: left;
+}
+
+.divider .establishment {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #d4af37;
+    padding: 0 15px;
+    font-weight: 600;
+}
+
+.tagline {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aaaaaa;
+    margin-bottom: 35px;
+}
+
+.image-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid #2a2a2a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    background: #000000;
+    line-height: 0;
+    width: 75%;
+    height: auto;
+    object-fit: contain;
+}
+
+.animation-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid #829b4fb5;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.8);
+    background: none;
+    line-height: 0;
+    width: 230px;
+    height: 410px;
+}
+
+.animation_wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid #829b4fb5;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.8);
+    background: none;
+    line-height: 0;
+    width: 230px;
+    height: 400px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.animation-section {
+    position: relative;   
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: rgba(142, 168, 100, 0.45);
+    border-radius: 50px;
+    width: 100%;
+    height: 550px;
+}
+
+.closeSec {
+   position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 100%;
+    border: none;
+    height: 35px;
+    width: 35px;
+    background: rgba(56, 46, 7, 0.8);
+}
+
+video {
+    width: 100%;
+    display: block;
+}
+
+.content-section {
+    margin-top: 35px;
+}
+
+.content-section h2 {
+    font-size: 24px;
+    color: #ffcc00;
+    margin-bottom: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.welcome-text {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #cccccc;
+    font-weight: 300;
+}
+
+#prost-btn {
+    background: linear-gradient(135deg, #ffcc00, #d4af37);
+    color: #111111;
+    border: none;
+    padding: 14px 35px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 25px;
+    box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+#prost-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(255, 204, 0, 0.2);
+}
+
+#toast-message {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #ffcc00;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#toast-message.show {
+    opacity: 1;
+}
+
+.songPlBt {
+    background: linear-gradient(135deg, #fe4fca, #5a1c4d);
+    color: #111111;
+    border: none;
+    padding: 14px 35px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 25px;
+    box-shadow: 0 5px 15px rgba(255, 56, 215, 0.2);
+    transition: all 0.2s ease;
+}
+
+.linkYT {
+    display: inline-block;
+    background: linear-gradient(135deg, #b60000, #ff8484);
+    color: #11111191;
+    text-decoration: none;
+    padding: 14px 35px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    margin-top: 25px;
+    box-shadow: 0 5px 15px rgba(193, 32, 32, 0.2);
+    transition: all 0.2s ease;
+}
+
+.active {
+    background: linear-gradient(135deg, #5a1c1c, #3016169e);
+    box-shadow: 0 5px 15px rgba(255, 56, 93, 0.404);
+}
+
+.site-footer {
+    margin-top: 45px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 13px;
+    color: #666666;
+}
+
+.disclaimer {
+    font-size: 10px;
+    color: #555555;
+    margin-top: 8px;
+    line-height: 1.4;
+}
