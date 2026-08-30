@@ -89,7 +89,7 @@ html {
     margin-bottom: 25px;
 }
 
-.image-wrapper {
+.image-wrapper, .comibee {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -177,7 +177,7 @@ video {
     padding: 0 5px;
 }
 
-#prost-btn, .songPlBt, .linkYT {
+#prost-btn, .songPlBt, .linkYT, .beerstage {
     width: 100%;
     max-width: 320px;
     display: inline-block;
@@ -220,7 +220,7 @@ video {
     opacity: 1;
 }
 
-.songPlBt {
+.songPlBt, .beerstage {
     background: linear-gradient(135deg, #fe4fca, #5a1c4d);
     color: #ffffff;
     box-shadow: 0 5px 15px rgba(255, 56, 215, 0.2);
