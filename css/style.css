@@ -102,7 +102,7 @@ html {
     max-width: 400px;
     height: auto;
     object-fit: contain;
-    margin: 0 auto;
+    margin: 30px auto 0;
 }
 
 .animation-wrapper, .animation_wrapper {
