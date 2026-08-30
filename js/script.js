@@ -41,7 +41,10 @@ const animation = document.getElementsByClassName('animation_wrapper');
 const animationen = document.getElementsByClassName('animation-wrapper');
 const animationSec = document.getElementsByClassName('animation-section');
 const baubiertitel = document.getElementsByClassName('baubiertitel')[0];
+const beerstage = document.getElementByClassName('beerstage')
+const beercom = document.getElementByClassName('comibee')
 let bauVar = 0;
+let comQu = 0;
 
 baubiertitel.addEventListener('click', () => {
     bauVar += 1;
@@ -60,6 +63,16 @@ closeSecBtn[0].addEventListener('click', () => {
     animationSec[0].classList.add('hidden')
     closeSecBtn[0].classList.add('hidden')
 })
+
+beerstage.addEventListener('click', () => {
+    if (comQu === 0) {
+        beercom.classList.remove('hidden');
+        comQu = 1;
+    } else {
+        beercom.classList.add('hidden');
+        comQu = 0;
+    }          
+});
 
 document.addEventListener('play', function(e) {
     if (e.target.tagName === 'AUDIO' || e.target.tagName === 'VIDEO') {
