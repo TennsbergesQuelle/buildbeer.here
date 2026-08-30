@@ -3,10 +3,20 @@ const toastMessage = document.getElementById('toast-message');
 const ploppSound = new Audio('medien/plopp.mp3');
 const songPlBt = document.querySelector('.songPlBt');
 const songBottle = new Audio('medien/flascherl.mp3');
+const closeSecBtn = document.querySelector('.closeSec');
+const animationUnderscore = document.querySelector('.animation_wrapper');
+const animationHyphen = document.querySelector('.animation-wrapper');
+const animationSec = document.querySelector('.animation-section');
+const baubiertitel = document.querySelector('.baubiertitel');
+const beerstage = document.querySelector('.beerstage');
+const imageModal = document.getElementById('imageModal');
+const modalClose = document.querySelector('.modal-close');
+const modalOverlay = document.querySelector('.modal-overlay');
 
 let anstossZaehler = 0;
 let toastTimeoutId = null;
 let bauTimeoutId = null;
+let bauVar = 0;
 
 if (prostBtn) {
   prostBtn.addEventListener('click', () => {
@@ -40,16 +50,6 @@ if (songPlBt) {
   });
 }
 
-const closeSecBtn = document.querySelector('.closeSec');
-const animationUnderscore = document.querySelector('.animation_wrapper');
-const animationHyphen = document.querySelector('.animation-wrapper');
-const animationSec = document.querySelector('.animation-section');
-const baubiertitel = document.querySelector('.baubiertitel');
-const beerstage = document.querySelector('.beerstage');
-const beercom = document.querySelector('.comibee');
-
-let bauVar = 0;
-
 if (baubiertitel) {
   baubiertitel.addEventListener('click', () => {
     bauVar += 1;
@@ -74,11 +74,33 @@ if (closeSecBtn) {
 
 if (beerstage) {
   beerstage.addEventListener('click', () => {
-    if (beercom) {
-      beercom.classList.toggle('hidden');
+    if (imageModal) {
+      imageModal.classList.remove('hidden');
+      beerstage.classList.add('active');
     }
   });
 }
+
+function closeModal() {
+  if (imageModal) {
+    imageModal.classList.add('hidden');
+    if (beerstage) beerstage.classList.remove('active');
+  }
+}
+
+if (modalClose) {
+  modalClose.addEventListener('click', closeModal);
+}
+
+if (modalOverlay) {
+  modalOverlay.addEventListener('click', closeModal);
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && imageModal && !imageModal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
 
 document.addEventListener('play', function(e) {
   if (e.target && (e.target.tagName === 'AUDIO' || e.target.tagName === 'VIDEO')) {
