@@ -177,7 +177,7 @@ video {
     padding: 0 5px;
 }
 
-#prost-btn, .songPlBt, .linkYT {
+#prost-btn, .songPlBt, .linkYT, .hrcomic {
     width: 100%;
     max-width: 320px;
     display: inline-block;
@@ -221,6 +221,12 @@ video {
 }
 
 .songPlBt {
+    background: linear-gradient(135deg, #fe4fca, #5a1c4d);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(255, 56, 215, 0.2);
+}
+
+.hrcomic {
     background: linear-gradient(135deg, #fe4fca, #5a1c4d);
     color: #ffffff;
     box-shadow: 0 5px 15px rgba(255, 56, 215, 0.2);
