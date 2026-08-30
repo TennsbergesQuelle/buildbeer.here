@@ -269,12 +269,15 @@ video {
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
     border: 1px solid rgba(255, 204, 0, 0.3);
-    padding: 20px;
+    padding: 70px 20px 20px 20px;
     max-width: 90vw;
     max-height: 90vh;
     overflow: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
     animation: modalSlideIn 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 @keyframes modalSlideIn {
@@ -288,27 +291,28 @@ video {
     }
 }
 
-.modal-close, .closeSec {
+.modal-close, .closeSec, .close-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(255, 204, 0, 0.2);
+    top: 18px;
+    right: 18px;
+    background: rgba(255, 204, 0, 0.22);
     border: 1px solid rgba(255, 204, 0, 0.4);
     color: #ffcc00;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: transform 0.15s ease, background 0.15s ease;
     -webkit-tap-highlight-color: transparent;
     outline: none;
+    z-index: 1020;
 }
 
-.modal-close:active {
+.modal-close:active, .closeSec:active, .close-btn:active {
     transform: scale(0.95);
     background: rgba(255, 204, 0, 0.3);
 }
@@ -316,10 +320,22 @@ video {
 .modal-image {
     width: auto;
     height: auto;
-    max-width: 75%;
+    max-width: 60%;
     border-radius: 15px;
     display: block;
     object-fit: contain;
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.modal-content > :not(.modal-close):not(.modal-image) {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.comic-modal .modal-close {
+    top: 18px;
+    right: 18px;
 }
 
 @media (min-width: 768px) {
@@ -339,7 +355,7 @@ video {
     .modal-content {
         max-width: 80vw;
         max-height: 80vh;
-        padding: 30px;
+        padding: 80px 30px 30px 30px;
     }
 }
 
@@ -348,12 +364,21 @@ video {
         margin: 20px;
         max-width: calc(100vw - 40px);
         max-height: calc(100vh - 40px);
-        padding: 15px;
+        padding: 55px 15px 15px 15px;
+        flex-direction: column;
+        gap: 12px;
     }
 
     .modal-close {
         width: 35px;
         height: 35px;
         font-size: 20px;
+        top: 12px;
+        right: 12px;
+    }
+
+    .modal-image {
+        max-width: 100%;
+        margin-right: 0;
     }
 }
