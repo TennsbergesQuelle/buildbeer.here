@@ -1,87 +1,92 @@
 const prostBtn = document.getElementById('prost-btn');
 const toastMessage = document.getElementById('toast-message');
 const ploppSound = new Audio('medien/plopp.mp3');
-const songPlBt = document.getElementsByClassName('songPlBt');
+const songPlBt = document.querySelector('.songPlBt');
 const songBottle = new Audio('medien/flascherl.mp3');
 
 let anstossZaehler = 0;
-let timeoutId = null;
+let toastTimeoutId = null;
+let bauTimeoutId = null;
 
-prostBtn.addEventListener('click', () => {
+if (prostBtn) {
+  prostBtn.addEventListener('click', () => {
     ploppSound.currentTime = 0;
     ploppSound.play();
-
     anstossZaehler++;
-    toastMessage.innerText = `Du hast heute schon ${anstossZaehler} mal angestoßen!`;
-    toastMessage.classList.add('show');
-    
-    clearTimeout(timeoutId);
-    
-    timeoutId = setTimeout(() => {
+    if (toastMessage) {
+      toastMessage.innerText = `Du hast heute schon ${anstossZaehler} mal angestoßen!`;
+      toastMessage.classList.add('show');
+      clearTimeout(toastTimeoutId);
+      toastTimeoutId = setTimeout(() => {
         toastMessage.classList.remove('show');
-    }, 1000);
-});
-
-songPlBt[0].addEventListener('click', () => {
-    if (songBottle.paused === false) {
-    songBottle.pause();}
-    else {
-        songBottle.currentTime = 0;
-    songBottle.play();
-    songPlBt[0].classList.add('active');
+      }, 1000);
     }
- });       
+  });
+}
 
-songBottle.addEventListener('pause', () => {
-    songPlBt[0].classList.remove('active');
-});
+if (songPlBt) {
+  songPlBt.addEventListener('click', () => {
+    if (!songBottle.paused) {
+      songBottle.pause();
+    } else {
+      songBottle.currentTime = 0;
+      songBottle.play();
+      songPlBt.classList.add('active');
+    }
+  });
 
-const closeSecBtn = document.getElementsByClassName('closeSec');
-const animation = document.getElementsByClassName('animation_wrapper');
-const animationen = document.getElementsByClassName('animation-wrapper');
-const animationSec = document.getElementsByClassName('animation-section');
-const baubiertitel = document.getElementsByClassName('baubiertitel')[0];
-const beerstage = document.getElementByClassName('beerstage')
-const beercom = document.getElementByClassName('comibee')
+  songBottle.addEventListener('pause', () => {
+    songPlBt.classList.remove('active');
+  });
+}
+
+const closeSecBtn = document.querySelector('.closeSec');
+const animationUnderscore = document.querySelector('.animation_wrapper');
+const animationHyphen = document.querySelector('.animation-wrapper');
+const animationSec = document.querySelector('.animation-section');
+const baubiertitel = document.querySelector('.baubiertitel');
+const beerstage = document.querySelector('.beerstage');
+const beercom = document.querySelector('.comibee');
+
 let bauVar = 0;
-let comQu = 0;
 
-baubiertitel.addEventListener('click', () => {
+if (baubiertitel) {
+  baubiertitel.addEventListener('click', () => {
     bauVar += 1;
     if (bauVar === 5) {
-         timeoutId = setTimeout(() => {bauVar = 0}, 5000);
-        animationen[0].classList.remove('hidden')
-        animation[0].classList.remove('hidden')
-        animationSec[0].classList.remove('hidden')
-        closeSecBtn[0].classList.remove('hidden')
-        };
-})
+      bauTimeoutId = setTimeout(() => { bauVar = 0; }, 5000);
+      if (animationHyphen) animationHyphen.classList.remove('hidden');
+      if (animationUnderscore) animationUnderscore.classList.remove('hidden');
+      if (animationSec) animationSec.classList.remove('hidden');
+      if (closeSecBtn) closeSecBtn.classList.remove('hidden');
+    }
+  });
+}
 
-closeSecBtn[0].addEventListener('click', () => {
-    animationen[0].classList.add('hidden')
-    animation[0].classList.add('hidden')
-    animationSec[0].classList.add('hidden')
-    closeSecBtn[0].classList.add('hidden')
-})
+if (closeSecBtn) {
+  closeSecBtn.addEventListener('click', () => {
+    if (animationHyphen) animationHyphen.classList.add('hidden');
+    if (animationUnderscore) animationUnderscore.classList.add('hidden');
+    if (animationSec) animationSec.classList.add('hidden');
+    closeSecBtn.classList.add('hidden');
+  });
+}
 
-beerstage.addEventListener('click', () => {
-    if (comQu === 0) {
-        beercom.classList.remove('hidden');
-        comQu = 1;
-    } else {
-        beercom.classList.add('hidden');
-        comQu = 0;
-    }          
-});
+if (beerstage) {
+  beerstage.addEventListener('click', () => {
+    if (beercom) {
+      beercom.classList.toggle('hidden');
+    }
+  });
+}
 
 document.addEventListener('play', function(e) {
-    if (e.target.tagName === 'AUDIO' || e.target.tagName === 'VIDEO') {
-        const allMedia = document.querySelectorAll('audio, video');
-        
-        allMedia.forEach(function(media) {
-            if (media !== e.target) {
-                media.pause();
-            }
-        });
-    }
+  if (e.target && (e.target.tagName === 'AUDIO' || e.target.tagName === 'VIDEO')) {
+    const allMedia = document.querySelectorAll('audio, video');
+    allMedia.forEach(function(media) {
+      if (media !== e.target) {
+        media.pause();
+      }
+    });
+  }
 }, true);
