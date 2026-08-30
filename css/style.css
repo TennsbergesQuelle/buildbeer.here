@@ -89,7 +89,7 @@ html {
     margin-bottom: 25px;
 }
 
-.image-wrapper, .comibee {
+.image-wrapper {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
@@ -252,6 +252,89 @@ video {
     line-height: 1.4;
 }
 
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    position: relative;
+    background: rgba(30, 30, 30, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 204, 0, 0.3);
+    padding: 20px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 204, 0, 0.2);
+    border: 1px solid rgba(255, 204, 0, 0.4);
+    color: #ffcc00;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+.modal-close:active {
+    transform: scale(0.95);
+    background: rgba(255, 204, 0, 0.3);
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 15px;
+    display: block;
+    object-fit: contain;
+}
+
 @media (min-width: 768px) {
     .brewery-card {
         padding: 40px;
@@ -261,8 +344,29 @@ video {
         font-size: 15px;
     }
 
-    #prost-btn, .songPlBt, .linkYT {
+    #prost-btn, .songPlBt, .linkYT, .beerstage {
         width: auto;
         padding: 14px 35px;
+    }
+
+    .modal-content {
+        max-width: 80vw;
+        max-height: 80vh;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 20px;
+        max-width: calc(100vw - 40px);
+        max-height: calc(100vh - 40px);
+        padding: 15px;
+    }
+
+    .modal-close {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
     }
 }
