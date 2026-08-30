@@ -49,6 +49,8 @@ html {
     margin: 0;
     cursor: text;
     word-break: break-word;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .divider {
@@ -190,6 +192,8 @@ video {
     text-align: center;
     text-decoration: none;
     transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 #prost-btn {
