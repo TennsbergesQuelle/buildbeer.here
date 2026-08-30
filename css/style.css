@@ -51,6 +51,7 @@ html {
     word-break: break-word;
     -webkit-tap-highlight-color: transparent;
     outline: none;
+    text-decoration: none;
 }
 
 .divider {
